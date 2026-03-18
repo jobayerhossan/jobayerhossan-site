@@ -1,4 +1,6 @@
 import { Metadata } from "next";
+import Link from "next/link";
+import { ContactForm } from "./contact-form";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -10,7 +12,7 @@ const contactSteps = [
   "Tell me what you need built, improved, or fixed.",
   "Share your timeline, goals, and any important references.",
   "I'll review the scope and reply with the best next step.",
-];
+]; 
 
 export default function ContactPage() {
   return (
@@ -40,25 +42,28 @@ export default function ContactPage() {
         <div className="site-container split-layout">
           <div className="content-card contact-card">
             <p className="eyebrow">Project Enquiries</p>
-            <h2>What to send</h2>
+            <h2>Send a quick message</h2>
+            <p>
+              You can also email me directly at{" "}
+              <Link href="mailto:info@jobayerhossan.com" className="contact-inline-link">
+                info@jobayerhossan.com
+              </Link>
+              .
+            </p>
+            <ContactForm />
+          </div>
+
+          <div className="content-card contact-card">
+            <p className="eyebrow">What to send</p>
+            <h2>Helpful details for a faster reply</h2>
             <ul className="bullet-list">
               {contactSteps.map((step) => (
                 <li key={step}>{step}</li>
               ))}
             </ul>
-          </div>
-
-          <div className="content-card contact-card">
-            <p className="eyebrow">Availability</p>
-            <h2>Open to selected projects</h2>
             <p>
               I work remotely with clients who value strong execution, honest
               communication, and a website that supports real business goals.
-            </p>
-            <p>
-              Add your preferred contact method, email address, phone number, or
-              scheduling link here when you&apos;re ready to connect this page to
-              your actual enquiry workflow.
             </p>
           </div>
         </div>
