@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { SiteHeader } from "./site-header";
 import "./globals.css";
 
 const navigation = [
@@ -50,26 +51,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className="site-shell">
-          <header className="site-header">
-            <div className="site-container site-header__inner">
-              <Link href="/" className="brand-mark">
-                <span className="brand-mark__eyebrow">Jobayer Hossan</span>
-                <span className="brand-mark__name">Full-Stack Developer</span>
-              </Link>
-
-              <nav className="site-nav" aria-label="Primary navigation">
-                {navigation.map((item) => (
-                  <Link key={item.href} href={item.href} className="site-nav__link">
-                    {item.label}
-                  </Link>
-                ))}
-              </nav>
-
-              <Link href="/contact" className="button button--primary button--compact">
-                Start a Project
-              </Link>
-            </div>
-          </header>
+          <SiteHeader navigation={navigation} />
 
           {children}
 
