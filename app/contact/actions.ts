@@ -12,10 +12,15 @@ const initialState: ContactFormState = {
   message: "",
 };
 
+const DEFAULT_SMTP_HOST = "smtp.hostinger.com";
+const DEFAULT_SMTP_PORT = 465;
+const DEFAULT_SMTP_USER = "info@jobayerhossan.com";
+const DEFAULT_RECIPIENT = "jobayer.bc001@gmail.com";
+
 function getTransporter() {
-  const host = process.env.SMTP_HOST;
-  const port = Number(process.env.SMTP_PORT ?? "465");
-  const user = process.env.SMTP_USER;
+  const host = process.env.SMTP_HOST ?? DEFAULT_SMTP_HOST;
+  const port = Number(process.env.SMTP_PORT ?? String(DEFAULT_SMTP_PORT));
+  const user = process.env.SMTP_USER ?? DEFAULT_SMTP_USER;
   const pass = process.env.SMTP_PASS;
 
   if (!host || !user || !pass) {
@@ -49,8 +54,8 @@ export async function submitContactForm(
     };
   }
 
-  const recipient = process.env.CONTACT_TO_EMAIL ?? "jobayer.bc001@gmail.com";
-  const sender = process.env.SMTP_FROM_EMAIL ?? process.env.SMTP_USER;
+  const recipient = process.env.CONTACT_TO_EMAIL ?? DEFAULT_RECIPIENT;
+  const sender = process.env.SMTP_FROM_EMAIL ?? process.env.SMTP_USER ?? DEFAULT_SMTP_USER;
 
   if (!sender) {
     return {
@@ -89,10 +94,16 @@ export async function submitContactForm(
       status: "success",
       message: "Thanks. Your message has been sent successfully.",
     };
-  } catch {
+  } catch (error) {
+    const isMissingConfig =
+      error instanceof Error &&
+      error.message === "SMTP environment variables are not configured.";
+
     return {
       status: "error",
-      message: "Sorry, the message could not be sent right now. Please email me directly.",
+      message: isMissingConfig
+        ? "SMTP settings are not loaded on the server yet. Restart the Next.js dev server and try again."
+        : "Sorry, the message could not be sent right now. Please email me directly.",
     };
   }
 }
