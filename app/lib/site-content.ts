@@ -1,5 +1,5 @@
 export const featuredMetrics = [
-  { value: "9+", label: "Years of professional experience" },
+  { value: "10+", label: "Years of professional experience" },
   { value: "Full stack", label: "WordPress, Laravel, React, and frontend delivery" },
   { value: "Remote", label: "Available for freelance projects worldwide" },
 ];
