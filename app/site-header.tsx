@@ -23,6 +23,23 @@ export function SiteHeader({ navigation }: SiteHeaderProps) {
     };
   }, [isOpen]);
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 961px)");
+
+    const handleDesktopMatch = (event: MediaQueryList | MediaQueryListEvent) => {
+      if (event.matches) {
+        setIsOpen(false);
+      }
+    };
+
+    handleDesktopMatch(mediaQuery);
+    mediaQuery.addEventListener("change", handleDesktopMatch);
+
+    return () => {
+      mediaQuery.removeEventListener("change", handleDesktopMatch);
+    };
+  }, []);
+
   return (
     <header className="site-header">
       <div className="site-container site-header__inner">

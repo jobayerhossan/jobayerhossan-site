@@ -258,6 +258,7 @@ ul {
 }
 
 .mobile-nav-overlay {
+  display: none;
   position: fixed;
   inset: 0;
   z-index: 34;
@@ -275,6 +276,7 @@ ul {
 }
 
 .mobile-nav {
+  display: none;
   position: fixed;
   top: 0;
   right: 0;
@@ -1077,6 +1079,11 @@ ul {
 
   .menu-toggle {
     display: inline-flex;
+  }
+
+  .mobile-nav-overlay,
+  .mobile-nav {
+    display: block;
   }
 
   .hero-title,
