@@ -1,11 +1,13 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { buildPageMetadata } from "../lib/seo";
 
-export const metadata: Metadata = {
-  title: "About",
+export const metadata: Metadata = buildPageMetadata({
+  title: "About Jobayer Hossan",
   description:
-    "Learn more about Jobayer Hossan, a full-stack developer with deep experience in WordPress, Laravel, and business-focused website development.",
-};
+    "Learn about Jobayer Hossan, a freelance full-stack developer helping businesses grow through polished WordPress and Laravel solutions.",
+  path: "/about",
+});
 
 const principles = [
   "Every website should support a clear business goal, not just look attractive.",

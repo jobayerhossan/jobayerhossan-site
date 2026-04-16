@@ -1,5 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+import { buildPageMetadata } from "./lib/seo";
 import { featuredMetrics, serviceHighlights, testimonials } from "./lib/site-content";
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Freelance Full-Stack Developer & WordPress Expert",
+  description:
+    "Jobayer Hossan builds high-converting business websites with WordPress, Laravel, and modern frontend development for serious brands.",
+  path: "/",
+});
 
 const engagementSteps = [
   "Discovery call to understand your goals, audience, and current bottlenecks.",

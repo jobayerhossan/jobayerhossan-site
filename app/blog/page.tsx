@@ -1,14 +1,16 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { getBlogPosts } from "../lib/blog";
+import { buildPageMetadata } from "../lib/seo";
 
 const POSTS_PER_PAGE = 9;
 
-export const metadata: Metadata = {
-  title: "Blog",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Blog: Web Development Insights",
   description:
-    "Read development insights, WordPress guidance, and practical web strategy articles from Jobayer Hossan.",
-};
+    "Read practical articles on WordPress, Laravel, frontend performance, and digital growth strategy by Jobayer Hossan.",
+  path: "/blog",
+});
 
 type BlogPageProps = {
   searchParams?: Promise<{

@@ -1,11 +1,13 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { buildPageMetadata } from "../lib/seo";
 
-export const metadata: Metadata = {
-  title: "Services",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Web Development Services",
   description:
-    "Professional web development services by Jobayer Hossan, including WordPress websites, Laravel applications, redesigns, and technical consulting.",
-};
+    "Explore WordPress development, Laravel applications, website redesigns, and technical consulting services tailored for business growth.",
+  path: "/services",
+});
 
 const services = [
   {

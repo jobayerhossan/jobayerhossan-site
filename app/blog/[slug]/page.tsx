@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { getBlogPostBySlug, getBlogPosts } from "../../lib/blog";
+import { buildPageMetadata } from "../../lib/seo";
 
 type BlogPostPageProps = {
   params: Promise<{
@@ -13,11 +14,14 @@ export async function generateMetadata({
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
   const post = await getBlogPostBySlug(slug);
+  const title = post?.title ?? "Blog Post";
+  const description = post?.excerpt ?? "Read the latest article from Jobayer Hossan.";
 
-  return {
-    title: post?.title ?? "Blog Post",
-    description: post?.excerpt ?? "Read the latest article from Jobayer Hossan.",
-  };
+  return buildPageMetadata({
+    title,
+    description,
+    path: `/blog/${slug}`,
+  });
 }
 
 export async function generateStaticParams() {
