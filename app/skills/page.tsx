@@ -1,11 +1,13 @@
 import { Metadata } from "next";
+import { buildPageMetadata } from "../lib/seo";
 import { coreSkills } from "../lib/site-content";
 
-export const metadata: Metadata = {
-  title: "Skills",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Skills & Technical Expertise",
   description:
-    "Explore the technical skills of Jobayer Hossan across WordPress, Laravel, React, frontend development, and performance optimization.",
-};
+    "Review Jobayer Hossan's expertise in WordPress, Laravel, React, frontend engineering, and SEO-focused performance optimization.",
+  path: "/skills",
+});
 
 const skillGroups = [
   {

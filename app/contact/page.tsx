@@ -1,12 +1,14 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import { buildPageMetadata } from "../lib/seo";
 import { ContactForm } from "./contact-form";
 
-export const metadata: Metadata = {
-  title: "Contact",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Contact Jobayer Hossan",
   description:
-    "Get in touch with Jobayer Hossan for WordPress development, Laravel applications, website redesigns, and freelance collaboration.",
-};
+    "Contact Jobayer Hossan for WordPress development, Laravel projects, site redesigns, and long-term freelance collaboration.",
+  path: "/contact",
+});
 
 const contactSteps = [
   "Tell me what you need built, improved, or fixed.",
